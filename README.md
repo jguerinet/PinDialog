@@ -1,16 +1,19 @@
-# README File Template
+# PinView
+[![Release](https://jitpack.io/v/com.guerinet/pin-view.svg)](https://jitpack.io/#com.guerinet/pin-view)
 
 ## Summary
-Insert a quick summary about this repository.
+A simple view that allows a user to enter a pin code of variable length
 
 ## Instructions
-Give some instructions on how to use this.
+To include this in your project, you can add it with Gradle by using [JitPack](https://jitpack.io). Replace X.X.X below with the latest version found on the status badge above:
 
-## Branches
-* Branch: List them here if needed
+    repositories {
+        maven { url "https://jitpack.io" }
+    }
 
-## Gradle Dependencies
-* Gradle Dependency: List them here
+	dependencies {
+        compile "com.guerinet:pin-view:X.X.X"
+	}
 
 ## Contributors
 * [Julien Guerinet](https://github.com/jguerinet)
@@ -19,7 +22,7 @@ Give some instructions on how to use this.
 See the [Change Log](CHANGELOG.md).
 
 ## Copyright
-	 Copyright 2016 Julien Guerinet
+	 Copyright 2017 Julien Guerinet
 
 	 Licensed under the Apache License, Version 2.0 (the "License");
 	 you may not use this file except in compliance with the License.
