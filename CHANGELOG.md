@@ -1,5 +1,8 @@
 # Change Log
 
+## Version 1.0.2 (2017-12-26)
+* Fixed package name
+
 ## Version 1.0.1 (2017-12-26)
 * Made the PinView customizable via an XML declaration
 

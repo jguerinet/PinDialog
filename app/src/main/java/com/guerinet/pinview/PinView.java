@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.guerinet.pindialog;
+package com.guerinet.pinview;
 
 import android.content.Context;
 import android.content.res.TypedArray;
