@@ -1,10 +1,23 @@
 /*
- * Copyright (c) 2013-2017 Ottawa mHealth. All rights reserved.
+ * Copyright 2017 Julien Guerinet
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
 package com.guerinet.pindialog;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Typeface;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.AppCompatEditText;
@@ -46,6 +59,12 @@ public class PinView extends LinearLayout implements View.OnFocusChangeListener 
     @Nullable
     private PinReceiver receiver;
 
+    /**
+     * Default programmatic constructor
+     *
+     * @param context App context
+     * @param size    Number of digits needed, should be more than 1
+     */
     public PinView(Context context, int size) {
         super(context);
         digits = new ArrayList<>();
@@ -55,29 +74,51 @@ public class PinView extends LinearLayout implements View.OnFocusChangeListener 
     public PinView(Context context) {
         super(context);
         digits = new ArrayList<>();
-        init(4);
+        init(0);
     }
 
     public PinView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         digits = new ArrayList<>();
-        init(4);
+        init(getSize(context, attrs));
     }
 
     public PinView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         digits = new ArrayList<>();
-        init(4);
+        init(getSize(context, attrs));
+    }
+
+    /**
+     * Obtains the pin size from the XML declaration
+     *
+     * @param context App context
+     * @param attrs   Nullable {@link AttributeSet}
+     * @return Size retrieved from the attributes, 0 if none found
+     */
+    private int getSize(Context context, @Nullable AttributeSet attrs) {
+        int size = 0;
+
+        if (attrs == null) {
+            return size;
+        }
+
+        // Get the attributes
+        TypedArray a = context.getTheme().obtainStyledAttributes(attrs, R.styleable.PinView, 0, 0);
+
+        try {
+            // Get the size attribute
+            size = a.getInt(R.styleable.PinView_pinLength, 0);
+        } finally {
+            a.recycle();
+        }
+        return size;
     }
 
     /**
      * Initialize EditText fields.
      */
     private void init(final int size) {
-        if (size < 1) {
-            throw new IllegalArgumentException("Size must be greater than 1");
-        }
-
         // Set up the LinearLayout
         setOrientation(HORIZONTAL);
         setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
