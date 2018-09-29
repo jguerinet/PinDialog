@@ -22,7 +22,7 @@ To include this in your project, you can add it with Gradle by using [JitPack](h
 See the [Change Log](CHANGELOG.md).
 
 ## Copyright
-	 Copyright 2017 Julien Guerinet
+	 Copyright 2017-2018 Julien Guerinet
 
 	 Licensed under the Apache License, Version 2.0 (the "License");
 	 you may not use this file except in compliance with the License.
