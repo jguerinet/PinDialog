@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Julien Guerinet
+ * Copyright 2018 Julien Guerinet
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -197,7 +197,7 @@ public class PinView extends LinearLayout implements View.OnFocusChangeListener 
 
                     // Concatenate all of the view info
                     for (EditText digit : digits) {
-                        builder.append(digit.getText().toString());
+                        builder.append(digit.getText());
                     }
 
                     receiver.onEntered(builder.toString());
@@ -282,7 +282,7 @@ public class PinView extends LinearLayout implements View.OnFocusChangeListener 
          * @param digit View that we are currently putting the FocusWatcher on
          */
         private FocusWatcher(EditText digit) {
-            this.position = (int) digit.getTag();
+            position = (int) digit.getTag();
         }
 
         @Override

@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 Julien Guerinet
+ * Copyright 2018 Julien Guerinet
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,16 +17,13 @@
 package com.guerinet.pinview
 
 /**
- * Instrumented test, which will execute on an Android device.
+ * Example local unit test, which will execute on the development machine (host).
  *
  * See [testing documentation](http://d.android.com/tools/testing).
  */
-@RunWith(AndroidJUnit4::class)
-class ExampleInstrumentedTest {
+class ExampleUnitTest {
     @Test
-    fun useAppContext() {
-        // Context of the app under test.
-        val appContext = InstrumentationRegistry.getTargetContext()
-        assertEquals("com.guerinet.pindialog", appContext.packageName)
+    fun addition_isCorrect() {
+        assertEquals(4, 2 + 2)
     }
 }
