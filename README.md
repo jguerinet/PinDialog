@@ -1,7 +1,7 @@
 # PinView
 
 [![Release](https://jitpack.io/v/com.guerinet/pin-view.svg)](https://jitpack.io/#com.guerinet/pin-view)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/908c9d477b1943f69256e4b48ad96765)](https://www.codacy.com/app/jguerinet/pin-view?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jguerinet/pin-view&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/908c9d477b1943f69256e4b48ad96765)](https://www.codacy.com/app/jguerinet/pin-view?utm_source=github.com&utm_medium=referral&utm_content=jguerinet/pin-view&utm_campaign=Badge_Grade)
 
 ## Summary
 
