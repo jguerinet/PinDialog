@@ -1,5 +1,9 @@
 # Change Log
 
+## Version 3.0.1 (2019-04-16)
+
+-   Changed `onEntered()` to be called every time a text is entered, and not just at the end
+
 ## Version 3.0.0 (2019-04-16)
 
 -   Updated min version to 21

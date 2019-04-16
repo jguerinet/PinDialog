@@ -42,7 +42,7 @@ import androidx.appcompat.widget.AppCompatEditText
  */
 class PinView : LinearLayout, View.OnFocusChangeListener {
 
-    /** Called when a text is entered */
+    /** Called whenever text is entered */
     var onEntered: ((String) -> Unit)? = null
 
     private val digits = mutableListOf<EditText>()
@@ -155,21 +155,18 @@ class PinView : LinearLayout, View.OnFocusChangeListener {
             it.onFocusChangeListener = this
             // Make sure to put our filter first, the LengthFilter will mess with our code
             it.filters = arrayOf(InputFilter.LengthFilter(1))
-        }
+            // Set up to catch the submission on each digit change
+            it.addTextChangedListener(object : TextWatcher {
 
-        // Set up to catch the submission on the last digit
-        digits[digits.size - 1].addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
 
-            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
-
-            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                if (s.isNotBlank()) {
-                    onEntered?.invoke(digits.joinToString("") { it.text })
+                override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                    onEntered?.invoke(digits.joinToString("") { digit -> digit.text })
                 }
-            }
 
-            override fun afterTextChanged(s: Editable) {}
-        })
+                override fun afterTextChanged(s: Editable) {}
+            })
+        }
     }
 
     /**
