@@ -1,5 +1,9 @@
 # Change Log
 
+## Version 3.0.3 (2019-04-16)
+
+-   v3.0.2 fixes
+
 ## Version 3.0.2 (2019-04-16)
 
 -   Added `text` field to get current inputted text

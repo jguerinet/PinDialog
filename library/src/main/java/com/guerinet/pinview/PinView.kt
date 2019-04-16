@@ -45,7 +45,7 @@ class PinView : LinearLayout, View.OnFocusChangeListener {
     /** Called whenever text is entered */
     var onEntered: ((String) -> Unit)? = null
 
-    private val text: String
+    val text: String
         get() = digits.joinToString("") { digit -> digit.text }
 
     private val digits = mutableListOf<EditText>()
