@@ -17,6 +17,7 @@
 package com.guerinet.pinview
 
 import android.content.Context
+import android.graphics.Color
 import android.graphics.Typeface
 import android.text.Editable
 import android.text.InputFilter
@@ -73,18 +74,25 @@ class PinView : LinearLayout, View.OnFocusChangeListener {
         // Get the attributes
         val a = context.theme.obtainStyledAttributes(attrs, R.styleable.PinView, 0, 0)
 
-        // Get the size attribute
+        // Get the different customizable attributes
+        val background = a.getResourceId(R.styleable.PinView_pinBackground, 0)
+        val horizontalPadding = a.getDimensionPixelSize(R.styleable.PinView_pinHorizontalPadding, 0)
+        val isBold = a.getBoolean(R.styleable.PinView_pinIsBold, true)
+        val isFullWidth = a.getBoolean(R.styleable.PinView_isFullWidth, false)
+        val margin = a.getDimensionPixelSize(
+            R.styleable.PinView_pinMargin,
+            resources.getDimensionPixelOffset(R.dimen.pinview_padding)
+        )
+        val pinWidth = a.getDimensionPixelOffset(R.styleable.PinView_pinWidth, -1)
+        val textColor = a.getColor(R.styleable.PinView_pinTextColor, Color.BLACK)
+        val textSize = a.getDimension(R.styleable.PinView_pinTextSize, resources.getDimension(R.dimen.pinview_text))
+        val verticalPadding = a.getDimensionPixelSize(R.styleable.PinView_pinVerticalPadding, 0)
         val size = a.getInt(R.styleable.PinView_pinLength, 0)
 
         a.recycle()
 
         // Set up the LinearLayout
         orientation = HORIZONTAL
-        layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT)
-
-        // Get the needed resources
-        val medium = resources.getDimensionPixelOffset(R.dimen.pinview_padding)
-        val headline = resources.getDimension(R.dimen.pinview_text)
 
         for (i in 0 until size) {
             // Create a pin with all of its attributes
@@ -117,15 +125,22 @@ class PinView : LinearLayout, View.OnFocusChangeListener {
                     }
                 }
             }.apply {
-                val params = LayoutParams(
-                    0, LayoutParams.WRAP_CONTENT,
-                        1f)
-                params.setMargins(medium, medium, medium, medium)
+                val finalPinWidth = if (pinWidth != -1) pinWidth else LayoutParams.WRAP_CONTENT
+
+                val params = LayoutParams(finalPinWidth, LayoutParams.WRAP_CONTENT, if (isFullWidth) 1f else 0f)
+                params.setMargins(margin, margin, margin, margin)
                 layoutParams = params
-                setTypeface(typeface, Typeface.BOLD)
+                val style = if (isBold) Typeface.BOLD else Typeface.NORMAL
+                setTypeface(typeface, style)
+                if (background != 0) {
+                    setBackgroundResource(background)
+                }
+                minEms = 1
+                setPadding(horizontalPadding, verticalPadding, horizontalPadding, verticalPadding)
+                setTextColor(textColor)
                 gravity = Gravity.CENTER
                 inputType = InputType.TYPE_CLASS_NUMBER
-                setTextSize(TypedValue.COMPLEX_UNIT_PX, headline)
+                setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize)
                 tag = i
 
                 // Add it to the LinearLayout and to the list of pins
