@@ -1,5 +1,5 @@
 /*
- * Copyright 2017-2018 Julien Guerinet
+ * Copyright 2017-2019 Julien Guerinet
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,9 +22,9 @@ android {
     compileSdkVersion 28
 
     defaultConfig {
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 28
-        versionName "2.0.0"
+        versionName "3.0.0"
     }
 
     buildTypes {
