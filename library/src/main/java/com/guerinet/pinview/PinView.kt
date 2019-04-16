@@ -1,5 +1,5 @@
 /*
- * Copyright 2017-2018 Julien Guerinet
+ * Copyright 2017-2019 Julien Guerinet
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,7 +27,6 @@ import android.util.TypedValue
 import android.view.Gravity
 import android.view.KeyEvent
 import android.view.View
-import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputConnection
 import android.view.inputmethod.InputConnectionWrapper
@@ -95,9 +94,8 @@ class PinView : LinearLayout, View.OnFocusChangeListener {
      */
     private fun init(size: Int) {
         // Set up the LinearLayout
-        orientation = LinearLayout.HORIZONTAL
-        layoutParams = LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT)
+        orientation = HORIZONTAL
+        layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT)
 
         // Get the needed resources
         val medium = resources.getDimensionPixelOffset(R.dimen.pinview_padding)
@@ -134,7 +132,8 @@ class PinView : LinearLayout, View.OnFocusChangeListener {
                     }
                 }
             }.apply {
-                val params = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT,
+                val params = LayoutParams(
+                    0, LayoutParams.WRAP_CONTENT,
                         1f)
                 params.setMargins(medium, medium, medium, medium)
                 layoutParams = params
