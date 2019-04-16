@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="PinView">
+        <attr name="isFullWidth" format="boolean"/>
+        <attr name="pinBackground" format="reference|color|string"/>
+        <attr name="pinHorizontalPadding" format="dimension"/>
+        <attr name="pinIsBold" format="boolean"/>
         <attr name="pinLength" format="integer"/>
+        <attr name="pinMargin" format="dimension"/>
+        <attr name="pinTextColor" format="reference|color"/>
+        <attr name="pinTextSize" format="dimension"/>
+        <attr name="pinVerticalPadding" format="dimension"/>
+        <attr name="pinWidth" format="dimension"/>
     </declare-styleable>
 </resources>
