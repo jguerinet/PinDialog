@@ -49,50 +49,35 @@ class PinView : LinearLayout, View.OnFocusChangeListener {
     /** Index of the currently focused digit view */
     private var focusPosition: Int = 0
 
-    /**
-     * Default programmatic constructor. Uses the app [context]. Determines the number of digits
-     *  using the [size] (should be more than 1, but it defaults to 0)
-     */
-    constructor(context: Context, size: Int = 0) : super(context) {
-        init(size)
+    constructor(context: Context) : super(context) {
+        init(null)
     }
 
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
-        init(getSize(context, attrs))
+        init(attrs)
     }
 
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) :
             super(context, attrs, defStyleAttr) {
-        init(getSize(context, attrs))
-    }
-
-    /**
-     * Returns the pin size from the XML declaration using the [context] and [attrs].
-     *  0 if none found
-     */
-    private fun getSize(context: Context, attrs: AttributeSet?): Int {
-        var size = 0
-
-        if (attrs == null) {
-            return size
-        }
-
-        // Get the attributes
-        val a = context.theme.obtainStyledAttributes(attrs, R.styleable.PinView, 0, 0)
-
-        try {
-            // Get the size attribute
-            size = a.getInt(R.styleable.PinView_pinLength, 0)
-        } finally {
-            a.recycle()
-        }
-        return size
+        init(attrs)
     }
 
     /**
      * Initializes the EditText fields.
      */
-    private fun init(size: Int) {
+    private fun init(attrs: AttributeSet?) {
+        if (attrs == null) {
+            error("pinLength required")
+        }
+
+        // Get the attributes
+        val a = context.theme.obtainStyledAttributes(attrs, R.styleable.PinView, 0, 0)
+
+        // Get the size attribute
+        val size = a.getInt(R.styleable.PinView_pinLength, 0)
+
+        a.recycle()
+
         // Set up the LinearLayout
         orientation = HORIZONTAL
         layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT)
