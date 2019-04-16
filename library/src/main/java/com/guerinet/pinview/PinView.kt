@@ -211,7 +211,7 @@ class PinView : LinearLayout, View.OnFocusChangeListener {
     private inner class FocusWatcher(digit: EditText) : TextWatcher {
 
         /** Position of the view this watcher is on */
-        private val position = digit.tag as Int
+        private val position = digit.tag as? Int ?: error("EditText's tag was not an Int")
 
         override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
 
