@@ -1,5 +1,10 @@
 # Change Log
 
+## Version 3.0.0 (2019-04-16)
+
+-   Updated min version to 21
+-   Added a bunch more customization attributes such as padding, width size, background, text size, text color, pin width, and whether the text is bold
+
 ## Version 2.0.0 (2018-09-29)
 
 -   Updated min version to 19
