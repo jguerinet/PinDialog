@@ -45,6 +45,9 @@ class PinView : LinearLayout, View.OnFocusChangeListener {
     /** Called whenever text is entered */
     var onEntered: ((String) -> Unit)? = null
 
+    private val text: String
+        get() = digits.joinToString("") { digit -> digit.text }
+
     private val digits = mutableListOf<EditText>()
 
     /** Index of the currently focused digit view */
@@ -161,7 +164,7 @@ class PinView : LinearLayout, View.OnFocusChangeListener {
                 override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
 
                 override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                    onEntered?.invoke(digits.joinToString("") { digit -> digit.text })
+                    onEntered?.invoke(text)
                 }
 
                 override fun afterTextChanged(s: Editable) {}
