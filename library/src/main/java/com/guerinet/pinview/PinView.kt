@@ -109,7 +109,7 @@ class PinView : LinearLayout, View.OnFocusChangeListener {
                         if (event.action == KeyEvent.ACTION_UP &&
                                 event.keyCode == KeyEvent.KEYCODE_DEL) {
                             // Back button pressed
-                            if (text.toString().isNotEmpty() && focusPosition > 0) {
+                            if (text.toString().isEmpty() && focusPosition > 0) {
                                 // Delete button has been clicked on a digit that can go backwards
                                 val newDigit = digits[focusPosition - 1]
 
