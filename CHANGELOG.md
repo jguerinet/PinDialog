@@ -1,5 +1,9 @@
 # Change Log
 
+## Version 3.0.4 (2019-04-22)
+
+-   Add method to set the text within the PinView
+
 ## Version 3.0.3 (2019-04-16)
 
 -   v3.0.2 fixes
