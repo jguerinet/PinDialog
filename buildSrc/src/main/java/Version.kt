@@ -14,6 +14,9 @@
  * limitations under the License.
  */
 
+/**
+ * Tool and Library versions used by Gradle
+ */
 object Version {
     const val targetSdk = 28
     const val minSdk = 21
