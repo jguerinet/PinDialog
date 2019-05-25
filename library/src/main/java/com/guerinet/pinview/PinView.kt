@@ -108,8 +108,13 @@ class PinView : LinearLayout, View.OnFocusChangeListener {
             // Create a pin with all of its attributes
             object : AppCompatEditText(context) {
 
-                override fun onCreateInputConnection(outAttrs: EditorInfo): InputConnection {
-                    return CustomInputConnection(super.onCreateInputConnection(outAttrs))
+                override fun onCreateInputConnection(outAttrs: EditorInfo): InputConnection? {
+                    val inputConnection = super.onCreateInputConnection(outAttrs)
+                    return if (inputConnection == null) {
+                        null
+                    } else {
+                        CustomInputConnection(inputConnection)
+                    }
                 }
 
                 inner class CustomInputConnection(target: InputConnection) :
