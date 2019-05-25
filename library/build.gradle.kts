@@ -14,28 +14,34 @@
  * limitations under the License.
  */
 
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
+plugins {
+    id("com.android.library")
+    id("kotlin-android")
+    id("kotlin-android-extensions")
+}
+
+object Versions {
+    const val targetSdk = 28
+    const val minSdk = 21
+}
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion(Versions.targetSdk)
 
     defaultConfig {
-        minSdkVersion 21
-        targetSdkVersion 28
-        versionName "3.0.4"
+        minSdkVersion(Versions.minSdk)
+        targetSdkVersion(Versions.targetSdk)
     }
 
     buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        getByName("release") {
+            isMinifyEnabled = false
+            proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
         }
     }
 }
 
 dependencies {
-    implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    implementation("androidx.appcompat:appcompat:1.0.2")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.31")
 }
