@@ -14,8 +14,6 @@
  * limitations under the License.
  */
 
-import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
-
 /*
  * Copyright 2017-2019 Julien Guerinet
  *
@@ -48,8 +46,8 @@ buildscript {
     dependencies {
         classpath("com.android.tools.build:gradle:3.4.1")
         classpath("com.diffplug.spotless:spotless-plugin-gradle:3.22.0")
-        classpath("com.github.ben-manes:gradle-versions-plugin:0.21.0")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.31")
+        classpath("com.github.ben-manes:gradle-versions-plugin")
+        classpath(kotlin("gradle-plugin", Version.kotlin))
     }
 }
 
@@ -59,24 +57,4 @@ allprojects {
         jcenter()
         mavenCentral()
     }
-}
-
-tasks.named<DependencyUpdatesTask>("dependencyUpdates") {
-    resolutionStrategy {
-        componentSelection {
-            all {
-                val rejected = listOf("alpha", "beta", "rc", "cr", "m", "preview", "b", "ea").any { qualifier ->
-                    candidate.version.matches(Regex("(?i).*[.-]$qualifier[.\\d-+]*"))
-                }
-                if (rejected) {
-                    reject("Release candidate")
-                }
-            }
-        }
-    }
-    // optional parameters
-    checkForGradleUpdate = true
-    outputFormatter = "json"
-    outputDir = "build/dependencyUpdates"
-    reportfileName = "report"
 }
