@@ -4,9 +4,6 @@ plugins {
     id("kotlin-android-extensions")
 }
 
-group = "com.guerinet"
-version = "3.0.5"
-
 android {
     compileSdkVersion(Version.targetSdk)
 
