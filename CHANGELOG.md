@@ -1,5 +1,10 @@
 # Change Log
 
+## Version 3.0.5 (2019-05-25)
+
+-   Fixed crash on Lollipop devices
+-   Moved everything Gradle-related over to Kotlin Scripting
+
 ## Version 3.0.4 (2019-04-22)
 
 -   Add method to set the text within the PinView
