@@ -1,5 +1,6 @@
 plugins {
     id("com.github.ben-manes.versions") version "0.21.0"
+    id("io.gitlab.arturbosch.detekt") version "1.0.0-RC14"
 }
 
 apply("https://raw.githubusercontent.com/jguerinet/Gradle-Artifact-Scripts/master/spotless.gradle")
@@ -25,4 +26,8 @@ allprojects {
         jcenter()
         mavenCentral()
     }
+}
+
+detekt {
+    config = files(file("detekt-config.yml"))
 }
