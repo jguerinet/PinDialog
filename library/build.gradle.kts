@@ -4,6 +4,9 @@ plugins {
     id("kotlin-android-extensions")
 }
 
+group = "com.guerinet"
+version = "3.0.5"
+
 android {
     compileSdkVersion(Version.targetSdk)
 
@@ -29,3 +32,5 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.0.2")
     implementation(kotlin("stdlib-jdk8", Version.kotlin))
 }
+
+apply("https://raw.githubusercontent.com/jguerinet/Gradle-Artifact-Scripts/master/android-kotlin-artifacts.gradle")
